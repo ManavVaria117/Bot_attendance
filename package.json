@@ -14,7 +14,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "install": "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false npm install",
+    "postinstall": "node install-chrome.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "dev": "nodemon server.js"
