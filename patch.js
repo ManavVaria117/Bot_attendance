@@ -21,7 +21,10 @@ const logAction = async (action, status, message) => {
 
 // Function to automate login/logout and clicking the buttons
 const automateLoginLogout = async (mode) => {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
   const page = await browser.newPage();
 
   try {
