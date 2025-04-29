@@ -14,10 +14,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "postinstall": "node install-chrome.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "dev": "nodemon server.js"
+    "start": "node server.js"
+    // "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
