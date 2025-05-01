@@ -17,4 +17,4 @@ RUN npm install
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 # Start your script
-CMD ["node", "patch.js"]
+CMD ["node", "server.js"]
