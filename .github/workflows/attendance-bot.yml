@@ -2,7 +2,7 @@ name: 🤖 Attendance Automation Bot
 
 on:
   schedule:
-    # Run at 7:59 AM and 5:59 PM UTC (convert to IST if needed)
+    # Run at 8:59 AM IST (clock-in) and 5:59 PM IST (clock-out)
     - cron: '29 2 * * 1-5'  # 8:59 AM IST (clock-in)
     - cron: '29 12 * * 1-5' # 5:59 PM IST (clock-out)
   workflow_dispatch: # Manual trigger for testing
@@ -15,8 +15,6 @@ jobs:
       FIX: ${{ secrets.FIX }}
       PASSWORD: ${{ secrets.PASSWORD }}
       LOGIN_URL: ${{ secrets.LOGIN_URL }}
-      CLOCKIN_TIME: '0 8 * * 1-5'  # Not used (cron handles it)
-      CLOCKOUT_TIME: '0 18 * * 1-5'
       MONGO_URI: ${{ secrets.MONGO_URI }}
       EMAIL_USER: ${{ secrets.EMAIL_USER }}
       EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
@@ -40,9 +38,9 @@ jobs:
         sudo apt-get install -y libx11-dev libxkbcommon-x11-0 libnss3 libatk-bridge2.0-0 libgtk-3-0
 
     - name: ▶️ Run CLOCK-IN automation
-      if: github.event.schedule == '29 2 * * 1-5'
+      if: startsWith(github.event.schedule, '29 2')
       run: node patch.js clockin
 
     - name: ▶️ Run CLOCK-OUT automation
-      if: github.event.schedule == '29 12 * * 1-5'
+      if: startsWith(github.event.schedule, '29 12')
       run: node patch.js clockout
