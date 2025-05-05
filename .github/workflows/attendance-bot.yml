@@ -3,18 +3,19 @@ name: 🤖 Attendance Automation Bot
 on:
   schedule:
     # Run at 8:59 AM IST (clock-in) and 5:59 PM IST (clock-out)
-    - cron: '29 2 * * 1-5'  # 8:59 AM IST (clock-in)
+    - cron: '00 2 * * 1-5'  # 8:59 AM IST (clock-in)
     - cron: '29 12 * * 1-5' # 5:59 PM IST (clock-out)
   workflow_dispatch: # Manual trigger for testing
 
 jobs:
   run-bot:
     runs-on: self-hosted
+
     env:
       FIX: ${{ secrets.FIX }}
       PASSWORD: ${{ secrets.PASSWORD }}
       LOGIN_URL: ${{ secrets.LOGIN_URL }}
-      MONGO_URI: ${{ secrets.MONGO_URI }}
+      # MONGO_URI: ${{ secrets.MONGO_URI }}
       EMAIL_USER: ${{ secrets.EMAIL_USER }}
       EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
       EMAIL_TO: ${{ secrets.EMAIL_TO }}
