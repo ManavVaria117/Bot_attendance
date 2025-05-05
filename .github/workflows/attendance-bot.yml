@@ -9,8 +9,7 @@ on:
 
 jobs:
   run-bot:
-    runs-on: ubuntu-latest
-
+    runs-on: self-hosted
     env:
       FIX: ${{ secrets.FIX }}
       PASSWORD: ${{ secrets.PASSWORD }}
