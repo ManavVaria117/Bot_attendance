@@ -18,6 +18,8 @@ jobs:
       EMAIL_USER: ${{ secrets.EMAIL_USER }}
       EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
       EMAIL_TO: ${{ secrets.EMAIL_TO }}
+      CLOCK_IN: 0 2 * * 1-5
+      CLOCK_OUT: 29 12 * * 1-5
 
     steps:
     - name: 📥 Checkout code
