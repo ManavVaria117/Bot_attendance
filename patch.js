@@ -96,8 +96,8 @@ const runAutomation = async (mode) => {
 };
 
 // Read dynamic times from .env
-const clockinTime = process.env.CLOCKIN_TIME || 30 2 * * 1-5 ;
-const clockoutTime = process.env.CLOCKOUT_TIME || 30 12 * * 1-5;
+const clockinTime = process.env.CLOCKIN_TIME ||"30 2 * * 1-5";
+const clockoutTime = process.env.CLOCKOUT_TIME ||"30 12 * * 1-5";
 
 // Validate times
 if (!clockinTime || !clockoutTime) {
