@@ -3,8 +3,8 @@ const puppeteer = require("puppeteer");
 const Log = require("./models/Log");
 const sendEmail = require("./utils/emailService");
 require("dotenv").config();
-// const connectDB = require("./config/db");
-// connectDB(); // Ensure DB connection is established before anything else
+const connectDB = require("./config/db");
+connectDB(); // Ensure DB connection is established before anything else
 
 // const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
