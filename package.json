@@ -8,7 +8,9 @@
     "mongoose": "^8.13.2",
     "node-cron": "^3.0.3",
     "nodemailer": "^6.10.1",
-    "puppeteer": "^24.7.1"
+    "puppeteer": "^24.7.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
   },
   "name": "backend",
   "version": "1.0.0",
