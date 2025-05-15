@@ -43,5 +43,5 @@ jobs:
       run: node patch.js clockin
 
     - name: ▶️ Run CLOCK-OUT automation
-      if: github.event.schedule == '0 14 * * 1-6'
+      # if: github.event.schedule == '0 14 * * 1-6'
       run: node patch.js clockout
