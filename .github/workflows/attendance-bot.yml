@@ -4,7 +4,7 @@ on:
   schedule:
     # Run at 8:59 AM IST (clock-in) and 5:59 PM IST (clock-out)
     - cron: "10 2 * * 1-6"  # 8:39 AM IST (clock-in)
-    - cron: "10 12 * * 1-6" # 5:39 PM IST (clock-out)
+    - cron: "0 14 * * 1-6" # 5:39 PM IST (clock-out)
   workflow_dispatch: # Manual trigger for testing
 
 jobs:
@@ -43,5 +43,5 @@ jobs:
       run: node patch.js clockin
 
     - name: ▶️ Run CLOCK-OUT automation
-      if: github.event.schedule == '10 12 * * 1-6'
+      if: github.event.schedule == '0 14 * * 1-6'
       run: node patch.js clockout
