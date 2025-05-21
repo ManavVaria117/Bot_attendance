@@ -1,47 +1,47 @@
-name: 🤖 Attendance Automation Bot
+# name: 🤖 Attendance Automation Bot
 
-on:
-  schedule:
-    # Run at 8:59 AM IST (clock-in) and 5:59 PM IST (clock-out)
-    - cron: "10 2 * * 1-6"  # 8:39 AM IST (clock-in)
-    - cron: "0 14 * * 1-6" # 5:39 PM IST (clock-out)
-  workflow_dispatch: # Manual trigger for testing
+# on:
+#   schedule:
+#     # Run at 8:59 AM IST (clock-in) and 5:59 PM IST (clock-out)
+#     - cron: "10 2 * * 1-6"  # 8:39 AM IST (clock-in)
+#     - cron: "0 14 * * 1-6" # 5:39 PM IST (clock-out)
+#   workflow_dispatch: # Manual trigger for testing
 
-jobs:
-  run-bot:
-    runs-on: ubuntu-latest
-    env:
-      FIX: ${{ secrets.FIX }}
-      PASSWORD: ${{ secrets.PASSWORD }}
-      LOGIN_URL: ${{ secrets.LOGIN_URL }}
-      MONGO_URI: ${{ secrets.MONGO_URI }}
-      EMAIL_USER: ${{ secrets.EMAIL_USER }}
-      EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-      EMAIL_TO: ${{ secrets.EMAIL_TO }}
-      CLOCKIN_TIME: ${{ secrets.CLOCKIN_TIME }}
-      CLOCKOUT_TIME: ${{ secrets.CLOCKOUT_TIME }}
+# jobs:
+#   run-bot:
+#     runs-on: ubuntu-latest
+#     env:
+#       FIX: ${{ secrets.FIX }}
+#       PASSWORD: ${{ secrets.PASSWORD }}
+#       LOGIN_URL: ${{ secrets.LOGIN_URL }}
+#       MONGO_URI: ${{ secrets.MONGO_URI }}
+#       EMAIL_USER: ${{ secrets.EMAIL_USER }}
+#       EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+#       EMAIL_TO: ${{ secrets.EMAIL_TO }}
+#       CLOCKIN_TIME: ${{ secrets.CLOCKIN_TIME }}
+#       CLOCKOUT_TIME: ${{ secrets.CLOCKOUT_TIME }}
 
-    steps:
-    - name: 📥 Checkout code
-      uses: actions/checkout@v3
+#     steps:
+#     - name: 📥 Checkout code
+#       uses: actions/checkout@v3
 
-    - name: 🟢 Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
+#     - name: 🟢 Setup Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: 18
 
-    - name: 📦 Install dependencies
-      run: npm install
+#     - name: 📦 Install dependencies
+#       run: npm install
 
-    - name: 🔧 Install Puppeteer dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y libx11-dev libxkbcommon-x11-0 libnss3 libatk-bridge2.0-0 libgtk-3-0
+#     - name: 🔧 Install Puppeteer dependencies
+#       run: |
+#         sudo apt-get update
+#         sudo apt-get install -y libx11-dev libxkbcommon-x11-0 libnss3 libatk-bridge2.0-0 libgtk-3-0
 
-    - name: ▶️ Run CLOCK-IN automation
-      if: github.event.schedule == '10 2 * * 1-6'
-      run: node patch.js clockin
+#     - name: ▶️ Run CLOCK-IN automation
+#       if: github.event.schedule == '10 2 * * 1-6'
+#       run: node patch.js clockin
 
-    - name: ▶️ Run CLOCK-OUT automation
-      # if: github.event.schedule == '0 14 * * 1-6'
-      run: node patch.js clockout
+#     - name: ▶️ Run CLOCK-OUT automation
+#       # if: github.event.schedule == '0 14 * * 1-6'
+#       run: node patch.js clockout
